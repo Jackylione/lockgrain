@@ -1,0 +1,51 @@
+{
+  "python": "3.14.4",
+  "platform": "linux",
+  "checks": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_dependency_order_is_ignored_but_marker_changes_remain (test_cli.CliTests.test_dependency_order_is_ignored_but_marker_changes_remain) ... ok\ntest_duplicate_package_or_wheel_identity_is_not_silently_collapsed (test_cli.CliTests.test_duplicate_package_or_wheel_identity_is_not_silently_collapsed) ... ok\ntest_empty_package_set_preserves_additions_and_removals (test_cli.CliTests.test_empty_package_set_preserves_additions_and_removals) ... ok\ntest_excessive_nesting_is_a_controlled_input_error (test_cli.CliTests.test_excessive_nesting_is_a_controlled_input_error) ... ok\ntest_extras_reordering_does_not_hide_an_unrelated_version_update (test_cli.CliTests.test_extras_reordering_does_not_hide_an_unrelated_version_update) ... ok\ntest_file_size_limit_has_an_inclusive_boundary (test_cli.CliTests.test_file_size_limit_has_an_inclusive_boundary) ... ok\ntest_help_and_bad_argument_counts_have_documented_exit_codes (test_cli.CliTests.test_help_and_bad_argument_counts_have_documented_exit_codes) ... ok\ntest_identical_lockfiles_have_no_changes (test_cli.CliTests.test_identical_lockfiles_have_no_changes) ... ok\ntest_invalid_toml_is_an_input_error_without_partial_output (test_cli.CliTests.test_invalid_toml_is_an_input_error_without_partial_output) ... ok\ntest_malformed_uv_records_are_rejected_even_when_inputs_match (test_cli.CliTests.test_malformed_uv_records_are_rejected_even_when_inputs_match) ... ok\ntest_missing_files_directories_and_pipes_fail_without_hanging (test_cli.CliTests.test_missing_files_directories_and_pipes_fail_without_hanging) ... ok\ntest_missing_or_unsupported_format_version_is_rejected (test_cli.CliTests.test_missing_or_unsupported_format_version_is_rejected) ... ok\ntest_named_dependency_groups_and_metadata_ignore_only_order (test_cli.CliTests.test_named_dependency_groups_and_metadata_ignore_only_order) ... ok\ntest_non_utf8_input_is_a_clear_error (test_cli.CliTests.test_non_utf8_input_is_a_clear_error) ... ok\ntest_quoted_keys_cannot_collide_with_nested_paths_or_inject_lines (test_cli.CliTests.test_quoted_keys_cannot_collide_with_nested_paths_or_inject_lines) ... ok\ntest_repeated_dependency_names_do_not_overwrite_each_other (test_cli.CliTests.test_repeated_dependency_names_do_not_overwrite_each_other) ... ok\ntest_resolution_marker_order_is_ignored_at_known_locations (test_cli.CliTests.test_resolution_marker_order_is_ignored_at_known_locations) ... ok\ntest_same_name_forks_keep_distinct_versions_and_sources (test_cli.CliTests.test_same_name_forks_keep_distinct_versions_and_sources) ... ok\ntest_unknown_fields_keep_order_and_empty_tables (test_cli.CliTests.test_unknown_fields_keep_order_and_empty_tables) ... ok\ntest_unknown_toml_dates_keep_their_type (test_cli.CliTests.test_unknown_toml_dates_keep_their_type) ... ok\ntest_version_change_is_shown_with_package_and_field (test_cli.CliTests.test_version_change_is_shown_with_package_and_field) ... ok\ntest_wheel_hash_change_is_isolated_despite_wheel_reordering (test_cli.CliTests.test_wheel_hash_change_is_isolated_despite_wheel_reordering) ... ok\n\n----------------------------------------------------------------------\nRan 22 tests in 3.638s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "lockgrain.py",
+        "examples/before.lock",
+        "examples/after.lock"
+      ],
+      "exit_code": 1,
+      "stdout": "- package[\"corelib\"].wheels[url=\"https://example.test/corelib-1.0.0.whl\"].hash = \"sha256:old\"\n+ package[\"corelib\"].wheels[url=\"https://example.test/corelib-1.0.0.whl\"].hash = \"sha256:new\"\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "./lockgrain.py",
+        "--help"
+      ],
+      "exit_code": 0,
+      "stdout": "usage: lockgrain [-h] BEFORE AFTER\n\nCompare two uv.lock files by field, ignoring known ordering noise. Offline and\nread-only.\n\npositional arguments:\n  BEFORE      original uv.lock (any filename)\n  AFTER       updated uv.lock (any filename)\n\noptions:\n  -h, --help  show this help message and exit\n\nExit status: 0 no field changes; 1 changes; 2 input or usage error.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "url": "https://github.com/astral-sh/uv/blob/0.13.0/uv.lock",
+  "retrieval_url": "https://api.github.com/repos/astral-sh/uv/contents/uv.lock?ref=0.13.0",
+  "blob_sha": "217069bf158fbfa78ecc9d77e0a4e3c1ab2c2787",
+  "bytes": 347478,
+  "sha256": "beaca1f1a9db7356bcf8d943d03081f31370169b0fed373f1997ade312d035c1",
+  "packages": 96,
+  "checks": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/ubuntu/codex-worker/projects/devtool-20261011/lockgrain.py",
+        "/home/ubuntu/codex-worker/projects/devtool-20261011/.test-tmp/upstream-smoke/uv-0.13.0.lock",
+        "/home/ubuntu/codex-worker/projects/devtool-20261011/.test-tmp/upstream-smoke/uv-0.13.0.lock"
+      ],
+      "exit_code": 0,
+      "stdout": "No field changes.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/ubuntu/codex-worker/projects/devtool-20261011/lockgrain.py",
+        "/home/ubuntu/codex-worker/projects/devtool-20261011/.test-tmp/upstream-smoke/uv-0.13.0.lock",
+        "/home/ubuntu/codex-worker/projects/devtool-20261011/.test-tmp/upstream-smoke/reordered.lock"
+      ],
+      "exit_code": 0,
+      "stdout": "No field changes.\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/ubuntu/codex-worker/projects/devtool-20261011/lockgrain.py",
+        "/home/ubuntu/codex-worker/projects/devtool-20261011/.test-tmp/upstream-smoke/uv-0.13.0.lock",
+        "/home/ubuntu/codex-worker/projects/devtool-20261011/.test-tmp/upstream-smoke/modified.lock"
+      ],
+      "exit_code": 1,
+      "stdout": "- lock.requires-python = \">=3.8\"\n+ lock.requires-python = \">=3.11\"\n",
+      "stderr": ""
+    }
+  ]
+}
